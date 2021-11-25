@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 
+
 module.exports = {
     hashPassword: password => {
         let salt = bcrypt.genSaltSync(5);
