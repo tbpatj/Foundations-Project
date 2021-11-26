@@ -105,6 +105,7 @@ module.exports = {
         .catch( error => {
             //check the errors if the user sent in a email that already exists we will report that back to them
             if(error.errors[0].message === 'email must be unique'){
+                console.log("email was not unique");
                 res.status(400).send({message:'email must be unique'});
                 return;
             }

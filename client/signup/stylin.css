@@ -19,13 +19,25 @@ p{
     color:white;
 }
 
-#main-container{
+
+.main-container{
+    
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    padding-top:100px;
     width:100vw;
     height:80vh;
+    transition:1s;
+}
+.opaque{
+    opacity: 1;
+    transform: translate(0,0px);
+}
+.transparent{
+    opacity: 0;
+    transform: translate(0,20px);
 }
 #login-container{
     width:100%;
@@ -78,6 +90,7 @@ label{
     font-family: "Circular Sp UI v3 T Bold";
     font-size:16px;
     font-weight: 400;
+    border-radius: 5px;
     
 }
 .input-user-cnt{
@@ -108,30 +121,8 @@ label{
     height:1px;
     background-color: rgb(43, 125, 198);
 }
-.input-bttn{
-    width:300px;
-    height:30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    border-style: solid;
-    border-width:2px;
-    border-color: black;
-    font-family: "Circular Sp UI v3 T Bold";
-    transition: 0.5s;
-}
-.input-bttn:hover{
-    background-color: black;
-    color:white;
-}
 
-.input-bttn:active{
-    transition: 0.2s;
-    background-color: rgb(130, 130, 130);
-}
-
-#login-bttn{
+#register-bttn{
     width:300px;
     height:40px;
     display: flex;
@@ -148,10 +139,10 @@ label{
     color:white;
     transition: 0.5s;
 }
-#login-bttn:hover{
+#register-bttn:hover{
     background-color: rgb(93, 177, 251);
 }
-#login-bttn:active{
+#register-bttn:active{
     background-color: rgb(79, 137, 188);
 }
 .spacing{
@@ -163,4 +154,7 @@ label{
     font-size:16px;
     color:black;
     text-align: center;
+}
+.hidden{
+    display: none;
 }

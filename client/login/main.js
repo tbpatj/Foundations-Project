@@ -40,6 +40,7 @@ async function login( event ){
         console.log(res);
         if(res.data.sessionKey){
             sessionKey = res.data.sessionKey;
+            
         } else console.log("no session key recieved");
 
     }).catch(error => console.log(error));
@@ -47,7 +48,7 @@ async function login( event ){
         window.localStorage.setItem("poggers_s_key",sessionKey);
         console.log("recieved and stored key");
         transitionLocation="/";
-        
+        window.location =  transitionLocation;
        
     } else {
         username.value = "";
@@ -61,7 +62,7 @@ function switchFrame( event ){
         swipebox.classList.add("swipe-box");
         swipebox.classList.remove("swipe-box2");
     } else if(swipebox.offsetWidth > 100){
-        window.location =  transitionLocation;
+        
     }
 }
 

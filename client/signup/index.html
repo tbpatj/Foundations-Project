@@ -17,7 +17,7 @@
         </div>
     </nav>
     <main>
-        <div id="main-container">
+        <div id="main-container" class="main-container transparent">
             <div id="login-container">
                 <div id="login-header"> 
                     <p>Sign Up</p>
@@ -27,6 +27,15 @@
                 <div id="form-container">
                     <form class='login-form'>
                         <div class='input-user-cnt'>
+                            <label for='fname-input'>What is your Firstname</label>
+                            <input name="firstname" id='fname-input' class="input-box" type=text placeholder="Firstname" value="">
+                        </div>
+                        <div class='input-pass-cnt'>
+                            <label for='lname-input'>What is your Lastname</label>
+                            <input name="lastname" id='lname-input' class="input-box" type=text placeholder="Lastname" value="">
+                        </div>
+
+                        <div class='input-pass-cnt'>
                             <label for='user-input'>What is your Username</label>
                             <input name="username" id='user-input' class="input-box" type=text placeholder="Username" value="">
                         </div>
@@ -40,19 +49,15 @@
                         </div>
                         <div class='input-pass-cnt'>
                             <label for='password-conf-input'>Confirm your Password</label>
+                            <div id='password-error' class='hidden'>passwords don't match</div> 
                             <input name="password-confirm" id='password-conf-input' class="input-box" type=password placeholder="Confirm Password" value="">
                         </div>
 
                         <div class='input-cnt'>
-                            <button type="submit" id="login-bttn">Login</button>
+                            <button type="submit" id="register-bttn">Register</button>
                         </div>
                     </form>
                     <!-- <div class="spacing"></div> -->
-                    <div class="seperator"><p></p></div>
-                    <div id="sign-up-container">
-                        <p class="text"> Don't have an account?</p>
-                        <div id="sign-up" class="input-bttn">Sign Up</div>
-                    </div>
                 </div>
             </div>
             <!-- End of where posts are contained -->
