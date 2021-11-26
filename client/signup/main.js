@@ -17,29 +17,44 @@ async function signup( event ){
     let username = document.getElementById('user-input').value;
     let password = document.getElementById('password-input').value;
     let passwordC = document.getElementById('password-conf-input').value;
+
+    
+    
     if(password === passwordC && password !== ""){
-        if(firstname !== "" && lastname !== "" && email !== "" && username !== "")
-        await axios
-        .post(`/new/user`, 
-        {
-            firstName: firstname,
-            lastName: lastname,
-            email: email,
-            username: username,
-            password: password
-        }
-        ).then(res => {
-            console.log(res);
-            if(res.status === 200 && res.data.userID){
+        if(firstname !== "" && lastname !== "" && email !== "" && username !== ""){
+            let response = {};
+            
+            await axios
+            .post(`/new/user`, 
+            {
+                firstName: firstname,
+                lastName: lastname,
+                email: email,
+                username: username,
+                password: password
+            }
+            ).then(res => {
+                response = res;
+                console.log(res);
+                
+
+            }).catch(error => console.log(error));
+            
+            if(response.data.userID){
+                mainContainer.classList.remove('opaque');
+                mainContainer.classList.add('transparent2');
+                await sleep(800);
                 window.location = "/login";
             }
+            
 
-        }).catch(error => console.log(error));
+        }
 
     } else {
         let pError = document.getElementById('password-error');
         pError.classList.remove('hidden');
     }
+    
     
 
     

@@ -39,6 +39,11 @@ p{
     opacity: 0;
     transform: translate(0,20px);
 }
+.transparent2{
+    opacity: 0;
+    transform: translate(0,-40px);
+}
+
 #login-container{
     width:100%;
  
