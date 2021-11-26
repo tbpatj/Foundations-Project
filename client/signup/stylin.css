@@ -9,7 +9,15 @@ nav{
     justify-content: center;
     align-items:flex-start;
 }
-
+body{
+    background-color: rgb(93, 177, 251);
+}
+main{
+    background-color: rgb(93, 177, 251);
+}
+p{
+    color:white;
+}
 
 #main-container{
     position: relative;
@@ -18,7 +26,6 @@ nav{
     align-items: center;
     width:100vw;
     height:80vh;
-    background-color: white;
 }
 #login-container{
     width:100%;
@@ -50,10 +57,11 @@ nav{
     width: 400px;
 }
 label{
-    font-size: 16px;
+    font-size: 14px;
     font-family: "Circular Sp UI v3 T Bold";
     font-weight: 500;
     height: 20px;
+    color:white;
     margin-bottom: 5px;
    
 }
@@ -98,7 +106,7 @@ label{
     margin: 10px;
     width:30%;
     height:1px;
-    background-color: rgb(201, 201, 201);;
+    background-color: rgb(43, 125, 198);
 }
 .input-bttn{
     width:300px;
@@ -155,33 +163,4 @@ label{
     font-size:16px;
     color:black;
     text-align: center;
-}
-
-/* animation div stuff */
-.swipe-box{
-    background-color: rgb(93, 177, 251);
-    width:0px;
-    height:125%;
-    transform: rotate(10deg);
-    position:fixed;
-    top:-100px;
-    right: -100px;
-    transition: 1s;
-}
-.swipe-box2{
-    background-color: rgb(93, 177, 251);
-    width:0px;
-    height:125%;
-    transform: rotate(10deg);
-    position:fixed;
-    top:-100px;
-    left: -100px;
-    transition: 1s;
-}
-.swipe-anim{
-    width:120vw;
-    transition: 1s;
-}
-.hidden{
-    display: none;
 }

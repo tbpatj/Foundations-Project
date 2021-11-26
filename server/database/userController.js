@@ -32,7 +32,7 @@ async function createSession(userID){
 async function verifyPass(query){
     let verifiedObj = null;
     await sequelize.query(`SELECT password_hash, user_id FROM users
-            WHERE username = '${query.user}'`)
+            WHERE username = '${query.username}'`)
             .then( dbRes => {
                 let {password_hash, user_id} = dbRes[0][0];
                 let check = checkPassword(query.password,password_hash);
@@ -64,18 +64,25 @@ module.exports = {
 
     },
     loginUser: async (req, res) => {
-        if(req.query.user){
-            let verifyObj = await verifyPass(req.query);
+        
+        if(req.body.username && req.body.password){
+            console.log(req.body.username);
+            let verifyObj = await verifyPass(req.body);
             if(verifyObj.pass){
                 let sessionKey = await createSession(verifyObj.user_id);
                 
                 if(sessionKey !== null){
                     res.status(200).send({sessionKey: sessionKey.sessionKey,message:"You're in bub"});
-                } else res.status(400).send("failed to create session");
+                    
+                } else res.status(400).send({message:"failed to create session", code:608});
+                return;
             } else {
-                res.status(400).send("No user with that name found or incorrect password");
+                res.status(400).send({message:"failed to log in, username or password not found", code: 609});
+                return;
             }
+
         }
+        res.status(204).send({message:"not enough info", code: 204});
         //send the user a session key upon successful entry, they will use this key when they try to access pages and such
     },
     /** CREATE USER FUNCTION  */

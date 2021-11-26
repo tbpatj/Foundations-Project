@@ -84,3 +84,33 @@ nav{
     width:20px;
     height:20px;
 }
+
+
+/* animation div stuff */
+.swipe-box{
+    background-color: rgb(93, 177, 251);
+    width:0px;
+    height:100%;
+    position:fixed;
+    top:-100px;
+    right: -100px;
+    transform: rotate(10deg);
+    transition: 1s;
+}
+.swipe-box2{
+    background-color: rgb(93, 177, 251);
+    width:0px;
+    height:125%;
+    position:fixed;
+    top:-100px;
+    left: -100px;
+    transform: rotate(10deg);
+    transition: 1s;
+}
+.swipe-anim{
+    width:120vw;
+    transition: 1s;
+}
+.hidden{
+    display: none;
+}

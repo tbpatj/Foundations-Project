@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="//db.onlinewebfonts.com/c/4504d77ae8b1517de38b53c4c4ec6461?family=Circular+Sp+UI+v3+T+Bold" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="login/css">
+    <link rel="stylesheet" href="signup/css">
 </head>
 <body>
     <nav>
@@ -20,19 +20,27 @@
         <div id="main-container">
             <div id="login-container">
                 <div id="login-header"> 
-                    <p>Login</p>
+                    <p>Sign Up</p>
                     <div class="seperator"></div>
                  </div>
                 
                 <div id="form-container">
                     <form class='login-form'>
                         <div class='input-user-cnt'>
-                            <label for='user-input'>Username</label>
+                            <label for='user-input'>What is your Username</label>
                             <input name="username" id='user-input' class="input-box" type=text placeholder="Username" value="">
                         </div>
                         <div class='input-pass-cnt'>
-                            <label for='password-input'>Password</label>
+                            <label for='email-input'>What is your email?</label>
+                            <input name="email" id='email-input' class="input-box" type=text placeholder="Email" value="">
+                        </div>
+                        <div class='input-pass-cnt'>
+                            <label for='password-input'>Enter your Password</label>
                             <input name="password" id='password-input' class="input-box" type=password placeholder="Password" value="">
+                        </div>
+                        <div class='input-pass-cnt'>
+                            <label for='password-conf-input'>Confirm your Password</label>
+                            <input name="password-confirm" id='password-conf-input' class="input-box" type=password placeholder="Confirm Password" value="">
                         </div>
 
                         <div class='input-cnt'>
@@ -54,5 +62,5 @@
     <div id="swipe-box" class="swipe-anim swipe-box2"></div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-<script src='login/js'></script>
+<script src='signup/js'></script>
 </html>

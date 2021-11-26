@@ -14,11 +14,17 @@ const port = process.env.PORT || 4005;
 
 //Send files to user
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/index.html'));
+	res.sendFile(path.join(__dirname, '../client/main/index.html'));
 });
-app.use('/js', express.static(path.join(__dirname,'../client/main.js')));
-app.use('/css', express.static(path.join(__dirname,'../client/stylin.css')));
-app.use('/viewsIcon',express.static(path.join(__dirname,'../resources/icons/views.png')))
+app.use('/js', express.static(path.join(__dirname,'../client/main/main.js')));
+app.use('/css', express.static(path.join(__dirname,'../client/main/stylin.css')));
+app.use('/viewsIcon',express.static(path.join(__dirname,'../resources/icons/views.png')));
+
+app.get('/signup', (req, res) => {
+	res.sendFile(path.join(__dirname, '../client/signup/index.html'));
+});
+app.use('/signup/js', express.static(path.join(__dirname,'../client/signup/main.js')));
+app.use('/signup/css', express.static(path.join(__dirname,'../client/signup/stylin.css')));
 
 
 
@@ -30,7 +36,7 @@ const password = require('./password');
 app.post('/new/user',createUser);
 
 
-app.get('/login/attempt', loginUser);
+app.post('/login/attempt', loginUser);
 
 //** LOGIN SCREEN **/
 app.get('/login/', async (req, res) => {
@@ -38,12 +44,7 @@ app.get('/login/', async (req, res) => {
 });
 app.use('/login/js', express.static(path.join(__dirname,'../client/login/main.js')));
 app.use('/login/css', express.static(path.join(__dirname,'../client/login/stylin.css')));
-app.post('/login/values', (req,res) => {
-	//console.log(res);
-	console.log(req.body);
-	//console.log(req);
-	res.status(400).send("you sent it");
-})
+
 
 
 
