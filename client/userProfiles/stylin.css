@@ -1,0 +1,347 @@
+@import url(//db.onlinewebfonts.com/c/4504d77ae8b1517de38b53c4c4ec6461?family=Circular+Sp+UI+v3+T+Bold);
+@font-face {font-family: "Circular Sp UI v3 T Bold"; src: url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.eot"); src: url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.woff") format("woff"), url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/4504d77ae8b1517de38b53c4c4ec6461.svg#Circular Sp UI v3 T Bold") format("svg"); }
+html, body, head{
+    margin:0px;
+    padding: 0px;
+}
+nav{
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+}
+
+#content-container{
+    margin-top: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#profile-container{
+    position: relative;
+    width: 900px;
+    height: 405px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(213, 213, 213);
+}
+
+#background-image
+{
+    width: 900px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: #80BAED;
+}
+#pic-user-cont{
+    width:150px;
+    left:45px;
+    top:30px;
+    height:195px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#profile-pic-contain{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    /* top:30px; */
+    /* left: 50px; */
+    border-radius: 100px;
+    background-color: white;
+    
+}
+#username{
+    /* top:130px; */
+    /* left: 50px; */
+    font-family: "Circular Sp UI v3 T Bold";
+    border-radius: 100px;
+}
+
+#profile-pic{
+    width: 141px;
+    height: 141px;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border-radius: 100px;
+    background-color: #0074DA;
+}
+
+.seperator{
+    width:150px;
+    height:1px;
+    background-color: rgb(218, 218, 218);
+}
+
+#liked-games-container{
+    margin-top:75px;
+    margin-left:30px;
+    width:180px;
+    height:150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+#liked-games{
+    width:150px;
+    height:98%;
+    overflow-y: scroll;
+}
+
+#user-info-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#about-me-container{
+    margin-top:15px;
+    margin-left:15px;
+    width:188px;
+    height:210px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(211, 211, 211);
+    border-width: 1px;
+}
+
+
+
+.unique-game-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top:3px;
+    margin-bottom: 3px;
+}
+.game-icon{
+    width:30px;
+    height:30px;
+    border-radius: 23px;
+    background-color: rgb(133, 133, 133);
+}
+.game-name{
+    width: 116px;
+    margin-left: 8px;
+    font-size:14px;
+    font-weight: 100;
+}
+
+#highlighted-clip-contain {
+    position: absolute;
+    left:50%;
+    top:105px;
+    width:587px;
+    height:330px;
+    background-color: blue;
+}
+
+
+#about-me-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#posts-container{
+    margin-top: 60px;
+    margin-left: 20px;
+    width:1000px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border-radius: 10px;
+}
+.center{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+}
+
+.post-container{
+    position:relative;
+    width:315px;
+    height:225px;
+    margin-top:15px;
+    /* margin:15px; */
+    
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+     
+}
+.post-contain-visual{
+    width:300px;
+    height:225px;
+    border-radius: 5px;
+    background-color: rgb(235, 235, 235);
+    transition: 0.25s;
+}
+.post-contain-visual:hover{
+    width:320px;
+    height:245px;
+}
+
+
+#plus-1{
+    position: absolute;
+    width:5px;
+    height:60%;
+    background-color: rgb(121, 121, 121);
+    border-radius: 3px;
+}
+#plus-2{
+    position: absolute;
+    width:50%;
+    height:5px;
+    background-color: rgb(121, 121, 121);
+    border-radius: 3px;
+}
+
+#create-new-post-center{
+    position:sticky;
+    width:10px;
+    height:10px;
+    margin-left:30%;
+    top:20%;
+    right:50%;
+    z-index: 1;
+
+}
+.outside-post-cont{
+    position: sticky;
+    width:100vw;
+    height:100vh;
+    z-index: 1;
+}
+#tinyEle{
+    width:1px;
+    height:1px;
+}
+#new-post-content-block{
+    position: absolute;
+    width:800px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    height:600px;
+    z-index: 1;
+    border-radius: 10px;
+    background-color: rgba(220, 220, 220, 0.7);
+}
+.create-new-post-container{
+    position: relative;
+    z-index: 1;
+    width:800px;
+    height:600px;
+    border-radius: 15px;
+    filter: blur(10);
+    filter:opacity(0.5), blur(10);
+    background-blend-mode:difference;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+#input-container{
+    margin-top:40px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    z-index: 2;
+}
+
+#image-input{
+    width:400px;
+    height:300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color:rgb(255, 255, 255);
+    z-index: 2;
+
+}
+#c-post-text{
+    margin-top: 40px;
+    font-size:20px;
+    font-family: "Circular Sp UI v3 T Bold";
+    z-index: 2;
+    
+}
+#post-text-input-container{
+    margin-left:20px;
+    z-index: 2;
+    width: 318px;
+}
+#post-text-input{
+    border-style: solid;
+    border-width: 1px;
+    border-color:rgb(201, 201, 201);
+    width:300px;
+    height:100px;
+    padding:4px;
+    resize: none;
+    padding-left:8px;
+    font-family: "Circular Sp UI v3 T Bold";
+    font-size:16px;
+    font-weight: 100;
+    border-radius: 5px;
+}
+label{
+    font-family: "Circular Sp UI v3 T Bold";
+    font-size:16px;
+}
+
+#game-ids{
+
+}
+
+#post-bttn-cntn{
+    margin-top:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+#post-bttn{
+    width:300px;
+    height:30px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border-style: solid;
+    border-width:2px;
+    border-color: black;
+    font-family: "Circular Sp UI v3 T Bold";
+    transition: 0.6s;
+}
+#post-bttn:hover{
+    width:300px;
+    height:30px;
+    background-color: rgba(0, 116, 218, 0.7);
+    border-color: rgb(121, 121, 121);
+}   
+
+.hidden{
+    display: none;
+}
+
+

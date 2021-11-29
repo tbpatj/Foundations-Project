@@ -3,8 +3,9 @@ let loginBttn = document.getElementById('login-bttn');
 loginBttn.addEventListener('click',login);
 let swipebox = document.getElementById('swipe-box');
 swipebox.addEventListener('transitionend',switchFrame);
-swipebox.addEventListener("dblclick",swipeBox);
+swipebox.addEventListener("click",swipeBox);
 let transitionLocation = "/login";
+
 
 let signupBttn = document.getElementById("sign-up");
 signupBttn.addEventListener('click',signUp)
@@ -14,14 +15,23 @@ async function signUp(){
     swipebox.classList.remove("swipe-box2");
     swipebox.classList.add("swipe-box");
     swipebox.classList.remove('hidden');
+    window.localStorage.setItem("highlight_transition","theme-1");
     await sleep(1000);
     window.location = "/signup";
 }
-
+function transitionCheck(){
+    let tState = window.localStorage.getItem("highlight_transition");
+    if(tState === "none"){
+        swipebox.classList.add("swipe-box");
+        swipebox.classList.remove("swipe-box2");
+        swipebox.classList.remove('swipe-anim');
+    }
+}
 function swipeBox(){
     console.log('swipebox');
     if(swipebox.classList.contains("swipe-anim")){
         swipebox.classList.remove("swipe-anim");
+        window.localStorage.setItem("highlight_transition","none");
     }
 }
 
@@ -31,6 +41,7 @@ async function login( event ){
     swipebox.classList.remove("swipe-box2");
     swipebox.classList.add("swipe-box");
     swipebox.classList.remove('hidden');
+    window.localStorage.setItem("highlight_transition","theme-1");
 
     let username = document.getElementById('user-input');
     let password = document.getElementById('password-input');
@@ -48,6 +59,7 @@ async function login( event ){
         window.localStorage.setItem("poggers_s_key",sessionKey);
         console.log("recieved and stored key");
         transitionLocation="/";
+        await sleep(200);
         window.location =  transitionLocation;
        
     } else {
@@ -56,7 +68,8 @@ async function login( event ){
     }
 }
 
-function switchFrame( event ){
+async function switchFrame( event ){
+    await sleep(2000);
     if(swipebox.classList.contains("swipe-box2")){
         console.log('removed swipebox');
         swipebox.classList.add("swipe-box");
@@ -64,6 +77,8 @@ function switchFrame( event ){
     } else if(swipebox.offsetWidth > 100){
         
     }
+    
+    transitionCheck();
 }
 
 sleep(500).then(() => {

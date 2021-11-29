@@ -16,8 +16,8 @@ const port = process.env.PORT || 4005;
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/main/index.html'));
 });
-app.use('/js', express.static(path.join(__dirname,'../client/main/main.js')));
-app.use('/css', express.static(path.join(__dirname,'../client/main/stylin.css')));
+app.use('/home/js', express.static(path.join(__dirname,'../client/main/main.js')));
+app.use('/home/css', express.static(path.join(__dirname,'../client/main/stylin.css')));
 app.use('/viewsIcon',express.static(path.join(__dirname,'../resources/icons/views.png')));
 
 app.get('/signup', (req, res) => {
@@ -50,9 +50,17 @@ app.use('/login/css', express.static(path.join(__dirname,'../client/login/stylin
 
 
 //** Users */
-app.get('/users/:user', async (req, res) => {
-	res.sendFile(path.join(__dirname, '../client/index.html'));
+app.get('/users/info/:userID',getUser);
+
+app.use('/users/js',express.static(path.join(__dirname,'../client/userProfiles/main.js')));
+app.use('/users/css',express.static(path.join(__dirname,'../client/userProfiles/stylin.css')));
+app.get('/users/:userID', async (req, res) => {
+	if(req.params.userID !== "js" && req.params.userID !== "css"){
+		res.sendFile(path.join(__dirname, '../client/userProfiles/index.html'));
+	}
+	//res.status(200).send("garbage");
 });
+
 app.post('/new/post',createPost);
 
 //seed();

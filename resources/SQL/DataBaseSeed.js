@@ -17,6 +17,9 @@ module.exports = { seed: `
 		email varchar(40) NOT NULL UNIQUE,
 		password_hash VARCHAR(80) NOT NULL,
 		username VARCHAR(40) NOT NULL,
+		likedGames VARCHAR(40),
+		fav_post INTEGER,
+		profilePic_id INTEGER,
 		bio varchar(800)
 	);
 

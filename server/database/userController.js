@@ -52,12 +52,18 @@ async function verifyPass(query){
 
 module.exports = {
     getUser: (req, res) => {
-        console.log(req.params.user);
+        console.log(req.params.userID);
         sequelize.query(`
+            SELECT * FROM users
+            WHERE user_id = '${req.params.userID}';
+
             SELECT * FROM posts
-            WHERE user_id = '${req.params.user}'
+            WHERE user_id = '${req.params.userID}';
         `).then( dbRes => {
-            res.status(200).send(dbRes[0]);
+            console.log(dbRes);
+            res.status(200).send([dbRes[0]]);
+        }).catch( error => {
+            console.log(error);
         })
     },
     deleteUser: (req, res) => {

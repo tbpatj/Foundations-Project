@@ -162,20 +162,20 @@ label{
 .swipe-box{
     background-color: rgb(93, 177, 251);
     width:0px;
-    height:150%;
+    height:130%;
     transform: rotate(10deg);
     position:fixed;
-    top:-180px;
+    top:-110px;
     right: -110px;
     transition: 1s;
 }
 .swipe-box2{
     background-color: rgb(93, 177, 251);
     width:0px;
-    height:150%;
+    height:130%;
     transform: rotate(10deg);
     position:fixed;
-    top:-180px;
+    top:-110px;
     left: -110px;
     transition: 1s;
 }
