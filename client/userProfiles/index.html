@@ -18,10 +18,19 @@
         </div>
     </nav> -->
     <div id='tinyEle'>
-        <div id="outside-post-cont" class="outside-post-cont"></div>
+        <div id="outside-post-cont" class="outside-post-cont hidden"></div>
     </div>
-    <div id="create-new-post-center">
-        <div id="create-new-post-container" class="create-new-post-container">
+    <div id="content-viewer-center">
+        <!-- this helps us view the profile image and other images -->
+        <div id="view-user-profile" class="view-user-profile hidden">
+            <div id="view-user-block"></div>
+            <div id="view-user-heading"></div>
+            <div id="view-user-container">
+                <div id="view-user-content"></div>
+            </div>
+        </div>
+        <!-- post container stuff, this helps us create new posts -->
+        <div id="create-new-post-container" class="create-new-post-container hidden">
             <div id='new-post-content-block'></div>
             <div id='c-post-text'>Create Post</div>
             <form>
@@ -31,19 +40,42 @@
                             <label>Paste</label><label> or upload visual content</label>
                         </div>
                         <input id='url-input' type="url" placeholder="Content-URL">
-                        <input type="file">
+                        <input id='file-input' type="file">
                     </div>
                     <div id="post-text-input-container">
                         <label>Post Content</label>
                         <textarea id="post-text-input" placeholder="Text Content"></textarea>
-                        <label for="game-ids">Game</label>
-                        <select name="game-ids" id="game-ids"></select>
-                        <label for="threads">Threads</label>
-                        <input id="threads-input" name="threads">
+                    <div class="reg-input-contain">
+                            <label for="game-ids">Game</label>
+                            <select name="game-ids" id="game-ids">
+                                <option>Rocket Leauge</option>
+                                <option>League of Legends</option>
+                                <option>CSGO</option>
+                                <option>PUBG</option>
+                            </select>
+                        </div>
+                        <div class="reg-input-contain">
+                            <label for="threads">Threads</label>
+                            <input id="threads-input" name="threads">
+                        </div>
+                        <div class="reg-input-contain">
+                            <label for="tagged-users">Tagged Users</label>
+                            <input id="tagged-users" name="tagged-users">
+                        </div>
+                        <div class="reg-input-contain">
+                            <label for="publication-type">Publication</label>
+                            <select name="publication-type" id="publication-type">
+                                <option>public</option>
+                                <option>friends-only</option>
+                                <option>private (just me)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div id="post-bttn-cntn">
+                    <div id="post-info" class="post-info-hid">garbage</div>
                     <div id="post-bttn">Create Post</div>
+                    
                 </div>
             </form>
             
@@ -52,10 +84,18 @@
     <main>
         <div id="content-container">
             <div id="profile-container">
-                <div id="background-image"></div>
+                <div id="background-image-contain">
+                    <div id="background-image-wrap">
+                         <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8d29vZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" id="background-image">
+                    </div>
+
+                </div>
                 <div id="pic-user-cont">
                     <div id="profile-pic-contain">
-                        <div id="profile-pic"></div>
+                        <!-- <div id="profile-pic"></div> -->
+                        <div id="profile-pic-circ">
+                            <img src="https://cdn2.scratch.mit.edu/get_image/user/2459849_60x60.png" id="profile-pic">
+                        </div>
                     </div>
                     <div id="username">username</div>
                 </div>
@@ -67,26 +107,7 @@
                                 <div class="game-icon"></div>
                                 <div class="game-name">Rocket leauge</div>
                             </div>
-                            <div class="unique-game-container">
-                                <div class="game-icon"></div>
-                                <div class="game-name">Rocket leauge</div>
-                            </div>
-                            <div class="unique-game-container">
-                                <div class="game-icon"></div>
-                                <div class="game-name">Rocket leauge</div>
-                            </div>
-                            <div class="unique-game-container">
-                                <div class="game-icon"></div>
-                                <div class="game-name">Rocket leauge dfalsdfadf</div>
-                            </div>
-                            <div class="unique-game-container">
-                                <div class="game-icon"></div>
-                                <div class="game-name">Rocket leauge</div>
-                            </div>
-                            <div class="unique-game-container">
-                                <div class="game-icon"></div>
-                                <div class="game-name">Rocket leauge</div>
-                            </div>
+                           
                         </div>
                         <div class="seperator"></div>
                     </div>
@@ -104,13 +125,9 @@
 
             </div>
             <div id="posts-container">
-                <div id="add-post" class='post-container'>
-                    <div class='post-contain-visual center'>
-                        <div id="plus-1"></div>
-                        <div id="plus-2"></div>
-                        
-                    </div>
-                </div>
+                
+            </div>
+            <div id="bottom-space">
             </div>
         </div>
         

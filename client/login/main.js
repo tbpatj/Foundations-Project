@@ -46,19 +46,21 @@ async function login( event ){
     let username = document.getElementById('user-input');
     let password = document.getElementById('password-input');
     let sessionKey = "none";
+    let userID = -1;
     await axios
     .post(`/login/attempt`, {username:username.value, password:password.value}).then(res => {
         console.log(res);
         if(res.data.sessionKey){
             sessionKey = res.data.sessionKey;
-            
+            userID = res.data.userID;
         } else console.log("no session key recieved");
 
     }).catch(error => console.log(error));
     if(sessionKey !== "none"){
-        window.localStorage.setItem("poggers_s_key",sessionKey);
+        window.localStorage.setItem("highlight_s_key",sessionKey);
+        window.localStorage.setItem("highlight_userID",userID);
         console.log("recieved and stored key");
-        transitionLocation="/";
+        transitionLocation=`/users/${userID}`;
         await sleep(200);
         window.location =  transitionLocation;
        

@@ -19,7 +19,8 @@ module.exports = { seed: `
 		username VARCHAR(40) NOT NULL,
 		likedGames VARCHAR(40),
 		fav_post INTEGER,
-		profilePic_id INTEGER,
+		profile_pic_URL VARCHAR,
+		background_pic_URL VARCHAR,
 		bio varchar(800)
 	);
 
@@ -43,19 +44,11 @@ CREATE TABLE posts (
 	post_views INTEGER NOT NULL,
 	game_id INTEGER NOT NULL,
 	threads varchar NOT NULL,
-	content_id INTEGER NOT NULL,
+	content_URL VARCHAR NOT NULL,
 	FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE pictures (
-	picture_id SERIAL PRIMARY KEY,
-	image_src varchar NOT NULL
-);
 
-CREATE TABLE videos (
-	video_id SERIAL PRIMARY KEY,
-	video_src varchar NOT NULL
-);
 
 CREATE TABLE threads (
 	thread_id SERIAL PRIMARY KEY,

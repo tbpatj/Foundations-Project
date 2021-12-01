@@ -19,12 +19,14 @@ async function verifyUser(sessionKey, userID){
             WHERE session_key = '${sessionKey}'
     `)
     .then( dbRes => {
+        console.log(dbRes);
         if(dbRes[0][0].user_id === userID) verified = true;
         console.log(`verfied status: ${verified}`);
     })
     .catch(error => console.log(error));
     return verified;
 }
+
 async function createContent(content){
     let contentReturn = -1;
     if(typeof (content) != undefined){
@@ -44,13 +46,14 @@ async function createContent(content){
     }
     return contentReturn;
 }
-async function createPostItem(body,contentID){
-    let {userID, caption} = body;
+async function createPostItem(body){
+    let {userID, caption, content_url} = body;
     let returnedID = -1;
     console.log("posting");
+    console.log(content_url);
     await sequelize.query(`
-        INSERT INTO posts (user_id, post_type, caption, post_views, likes, game_id, threads, content_id)
-        VALUES ('${userID}',1,'${caption}',0,0,1,'1,2',${contentID})
+        INSERT INTO posts (user_id, post_type, caption, post_views, likes, game_id, threads, content_url)
+        VALUES ('${userID}',1,'${caption}',0,0,1,'1','${content_url}')
         RETURNING post_id;
     `)
     .then( dbRes => {
@@ -67,21 +70,23 @@ async function createPostItem(body,contentID){
 
 
 module.exports = {
+    verifyUser: verifyUser,
      createPost: async (req, res) => {
-         let {userID, sessionKey, contentURL} = req.body;
+         let {userID, sessionKey} = req.body;
+         console.log("User ID: " + userID);
         //Verify user
-        let verified = await verifyUser(sessionKey,userID);
+        let verified = await verifyUser(sessionKey,parseInt(userID));
         if(verified){
             //create content
-            let contentID = await createContent(contentURL);
-            if(contentID !== -1 && contentID !== undefined && contentID !== null){
+            // let contentID = await createContent(contentURL);
+            // if(contentID !== -1 && contentID !== undefined && contentID !== null){
                 //after we have verified that the content was created we will push the post data to the server
-                let postID = await createPostItem(req.body,contentID);
-                if(postID !== -1 && postID !== undefined && postID !== null){
-                    console.log(postID);
-                    res.status(200).send({message:"Post creation successful",postID: postID})
-                } else res.status(400).send({message:"failed to create post, content was created successfully", contentID: contentID})
-            } else res.status(400).send({message:"Failed to create content, try again"});
+            let postID = await createPostItem(req.body);
+            if(postID !== -1 && postID !== undefined && postID !== null){
+                console.log(postID);
+                res.status(200).send({message:"Post creation successful",postID: postID})
+            } else res.status(400).send({message:"failed to create post, content was created successfully", contentID: contentID})
+            // } else res.status(400).send({message:"Failed to create content, try again"});
         } else res.status(400).send({message:"invalid session"});
     },
     garbage: (req,res) => {

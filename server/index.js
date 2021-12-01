@@ -30,8 +30,8 @@ app.use('/signup/css', express.static(path.join(__dirname,'../client/signup/styl
 
 //Database
 const {seed} = require('./database/baseController');
-const {createUser,loginUser,getUser} = require('./database/userController');
-const {createPost,garbage} = require('./database/postController');
+const {createUser,loginUser,getUser,updateUser} = require('./database/userController');
+const {createPost} = require('./database/postController');
 const password = require('./password');
 app.post('/new/user',createUser);
 
@@ -46,10 +46,9 @@ app.use('/login/js', express.static(path.join(__dirname,'../client/login/main.js
 app.use('/login/css', express.static(path.join(__dirname,'../client/login/stylin.css')));
 
 
-
-
-
 //** Users */
+app.put('/user/update', updateUser);
+
 app.get('/users/info/:userID',getUser);
 
 app.use('/users/js',express.static(path.join(__dirname,'../client/userProfiles/main.js')));

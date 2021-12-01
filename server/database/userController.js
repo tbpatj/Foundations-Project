@@ -16,6 +16,8 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 //Get password stuff
 const {hashPassword, checkPassword} = require('../password');
+const {verifyUser} = require('./postController');
+
 async function createSession(userID){
     let sessionObj = null;
     let sessionKey = hashPassword(`session${sessionAccum}`);
@@ -34,6 +36,7 @@ async function verifyPass(query){
     await sequelize.query(`SELECT password_hash, user_id FROM users
             WHERE username = '${query.username}'`)
             .then( dbRes => {
+                console.log(dbRes);
                 let {password_hash, user_id} = dbRes[0][0];
                 let check = checkPassword(query.password,password_hash);
                 console.log(check);
@@ -48,9 +51,50 @@ async function verifyPass(query){
             });
     return verifiedObj;
 }
+async function updateBackgroundURL(){
+
+}
 
 
 module.exports = {
+    //used for updating the user info, such as bio, background images, and profile pictures
+    updateUser: async (req, res) =>{
+        //console.log(req);
+        console.log(req.body);
+        
+           
+        
+        if(req.body.sessionKey !== null && req.body.userID !== null){
+            let {sessionKey, userID, backgroundURL} = req.body;
+            let verified = await verifyUser(sessionKey, parseInt(userID));
+            if(verified){
+                console.log("in");
+                if(req.body.backgroundURL !== null && req.body.backgroundURL !== undefined){
+                    sequelize.query(`
+                    UPDATE users
+                        SET background_pic_URL = '${req.body.backgroundURL}'
+                        WHERE user_id = '${userID}';
+                    `).then( dbRes => res.status(200).send({message:"success", code: 200})
+                    ).catch(error => {
+                        console.log(error)
+                        res.status(400).send({message:"failed query didn't succeed", code: 400});
+                    });
+                } else if(req.body.profileURL !== null && req.body.profileURL !== undefined){
+                    sequelize.query(`
+                    UPDATE users
+                        SET profile_pic_URL = '${req.body.profileURL}'
+                        WHERE user_id = '${userID}';
+                    `).then( dbRes => res.status(200).send({message:"success", code: 200})
+                    ).catch(error => {
+                        console.log(error)
+                        res.status(400).send({message:"failed query didn't succeed", code: 400});
+                    });
+                }
+            
+                console.log(verified);
+            } else res.status(400).send({message:"user was not verified", code: 400});
+        }
+    },
     getUser: (req, res) => {
         console.log(req.params.userID);
         sequelize.query(`
@@ -72,13 +116,14 @@ module.exports = {
     loginUser: async (req, res) => {
         
         if(req.body.username && req.body.password){
+            req.body.username = req.body.username.toLowerCase();
             console.log(req.body.username);
             let verifyObj = await verifyPass(req.body);
             if(verifyObj.pass){
                 let sessionKey = await createSession(verifyObj.user_id);
                 
                 if(sessionKey !== null){
-                    res.status(200).send({sessionKey: sessionKey.sessionKey,message:"You're in bub"});
+                    res.status(200).send({sessionKey: sessionKey.sessionKey, userID: verifyObj.user_id,message:"You're in bub"});
                     
                 } else res.status(400).send({message:"failed to create session", code:608});
                 return;
@@ -96,7 +141,7 @@ module.exports = {
         //Log what the user sent in then destructure it
         console.log(req.body);
         let {firstName, lastName, email, username, password} = req.body;
-
+        username = username.toLowerCase();
         let hashedP = hashPassword(password);
         //create the user
         sequelize.query(`
