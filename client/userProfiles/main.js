@@ -205,7 +205,7 @@ async function getStartup(){
         username.textContent = response[0].username;
         aboutText.textContent = response[0].bio;
         console.log(response.length);
-        for(let i = 1; i < response.length; i ++){
+        for(let i = response.length - 1; i >= 1; i --){
             console.log('yup');
             let post = document.createElement('div');
             post.classList.add('post-container');
