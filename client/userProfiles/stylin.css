@@ -114,7 +114,8 @@ nav{
     border-radius: 100px;
     background-color: #0074DA;
     transition: 0.25s;
-    overflow: hidden;
+    overflow:hidden;
+    overflow-x: hidden;
 }
 #profile-pic-circ:hover{
     width: 151px;
